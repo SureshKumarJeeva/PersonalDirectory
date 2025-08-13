@@ -41,6 +41,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
+          context: docker
           push: true
           tags: sureshkumarjeeva/personal-directory:latest
    # - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
