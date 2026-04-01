@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create("income_expenses", function(BluePrint $table){
-            $table->id()->primary();
+            $table->id()->bigIncrements();
             $table->datetime("date");
             $table->string("transaction_type", length:10);
             $table->double("amount");

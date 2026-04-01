@@ -16,6 +16,7 @@ import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
+import MainLayout from './Layouts/MainLayout.vue';
 
 const routes = [{path:"/home", Component:Home}];
 
@@ -27,7 +28,10 @@ const router = createRouter({
 createInertiaApp({
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
-    return pages[`./Pages/${name}.vue`]
+    let page = pages[`./Pages/${name}.vue`];
+
+    page.default.layout = page.default.layout || MainLayout;
+    return page;
   },
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })

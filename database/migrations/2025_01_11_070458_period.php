@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create("periods", function(BluePrint $table){
-            $table->id()->primary();
-            $table->foreignId("user_id")->contrained('users');
+            $table->id()->bigIncrements();
+            $table->foreignId("user_id")->constrained('users');
             $table->datetime('period_date');
             $table->timestamps();
         });

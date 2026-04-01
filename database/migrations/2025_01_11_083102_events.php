@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create("events", function(BluePrint $table){
-            $table->id()->primary();
+            $table->id()->bigIncrements();
             $table->foreignId("event_category_id")->nullable()->constrained('event_category');
             $table->string("event_desc")->nullable();
             $table->foreignId("user_id")->nullable()->constrained('users');
